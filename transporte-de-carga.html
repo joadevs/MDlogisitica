@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MD Logística</title>
+  <link rel="shortcut icon" href="img/logo MD GRANDE (2)_pages-to-jpg-0001-Photoroom.png" type="image/x-icon">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f2f2f2;
+
+      font-family: 'Arial', sans-serif;
+    }
+
+
+
+
+.marquesina-container {
+      width: 100%;
+      overflow: hidden;
+
+    }
+
+    .marquesina {
+      display: inline-block;
+      white-space: nowrap;
+      padding-left: 100%;
+      animation: deslizar 30s linear infinite;
+      font-size: 1.2rem;
+    }
+
+    .cotizacion-box {
+      display: inline-block;
+      margin: 0 2rem;
+      width: 23%;
+      padding: 10px;
+      border-radius: 5px;
+      white-space: nowrap;
+    }
+
+    .titulo {
+      font-weight: bold;
+      color:#e76d1f;
+      margin-right: 5px;
+    }
+
+    .valor {
+      color: black;
+    }
+
+    @keyframes deslizar {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    @media screen and (max-width: 768px) {
+      .marquesina {
+        font-size: 1rem;
+        animation-duration: 40s;
+      }
+
+      .cotizacion-box {
+        margin: 0 1rem;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .marquesina {
+        font-size: 0.9rem;
+        animation-duration: 50s;
+      }
+
+      .cotizacion-box {
+        margin: 0 0.5rem;
+      }
+    }
+
+    .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+}
+
+.navbar ul {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  align-items: center;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.btn-contacto {
+  background: #ff7e2d;
+  padding: 10px 15px;
+  border-radius: 5px;
+  color: white;
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  height: 3px;
+  background-color: black;
+  border-radius: 5px;
+}
+
+/* Responsive menu */
+@media (max-width: 768px) {
+  .navbar ul {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    gap: 20px;
+    
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro con transparencia */
+    position: absolute;
+    top: 60px;
+    left: 0;
+    padding: 10px;
+  }
+  .navbar a {
+    color: white; /* Color del texto */
+  }
+  .navbar ul.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+}
+
+
+.footer-largo {
+  background-color: #1b1b18;
+  color: #c4c1c1;
+  padding: 60px 20px 30px;
+  font-family: sans-serif;
+}
+
+.footer-contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-columna {
+  flex: 1 1 220px;
+}
+
+.footer-columna h3,
+.footer-columna h4 {
+  color: #e76d1f;
+  margin-bottom: 15px;
+}
+
+.footer-columna ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-columna ul li {
+  margin-bottom: 10px;
+}
+
+.footer-columna a {
+  color: #c4c1c1;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-columna a:hover {
+  color: #e76d1f;
+}
+
+.footer-redes a img {
+  width: 30px;
+  margin-right: 10px;
+  transition: transform 0.3s ease;
+}
+
+
+.footer-copy {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid #44403d;
+  margin-top: 40px;
+  font-size: 0.9rem;
+  color: #7c7c7c;
+}
+ 
+.boton-flotante {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  transition: transform 0.3s ease;
+}
+
+.boton-flotante:hover {
+  transform: scale(1.1);
+}
+
+.boton-flotante img {
+  width: 60px;
+  border-radius: 50%;
+
+  height: 60px;
+}
+ .logo img {
+    height: 150px;
+    max-width: 100%;
+  }
+ /* Estilos generales */
+.contenido-hero {
+  position: absolute;
+  bottom: 160px;
+  left: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.contenido-hero h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.btn-cotizacion {
+  background: #ff7e2d;
+  padding: 15px 25px;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+.btn-cotizacion:hover {
+  background: #e76d1f; /* Efecto hover */
+}
+  
+   /* Estilos generales para el hero */
+.hero {
+  background-image: url('img/ChatGPT Image 14 may 2025, 02_08_07 p.m..png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: white;
+  text-align: center;
+  padding: 0 20px; /* Agregado para darle espacio al contenido en pantallas pequeñas */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contenido-hero h1 {
+margin-left: -70px;
+}
+  .hero {
+    background-position: center top; /* Cambiar el enfoque de la imagen */
+    background-size: cover;
+    height: 80vh; /* Ajustar la altura en pantallas pequeñas */
+  }
+}
+
+@media (max-width: 480px) {
+  .contenido-hero h1 {
+margin-left: -70px;
+}
+
+  .hero {
+    background-position: center top; /* Centrado de la imagen */
+    background-size: cover;
+    height: 60vh; /* Ajustar la altura aún más */
+    padding: 0 10px; /* Menos espacio lateral en pantallas muy pequeñas */
+  }
+}
+
+  </style>
+</head>
+<body>
+ <header class="hero">
+    <nav class="navbar">
+      <div class="logo">
+        <img src="img/logo MD GRANDE (2)_pages-to-jpg-0001-Photoroom.png" alt="">
+      </div>
+      <ul class="menu">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="transporte-de-carga.html">FLOTA</a></li>
+        <li><a href="deposito-logistico.html">DEPOSITOS</a></li>
+        <li><a href="contacto.html" class="btn-contacto">CONTACTOS</a></li>
+      </ul>
+      <div class="menu-toggle" id="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+    
+    <div class="contenido-hero">
+      <h1>SU SATISFACCIÓN, ES NUESTRO ÉXITO</h1>
+      <a href="https://wa.me/3772456852" class="btn-cotizacion">SOLICITAR COTIZACIÓN</a>
+    </div>
+  </header>
+ 
+  <section class="card-container">
+  <div class="card">
+    <img src="img/camiones escalables.jpeg" alt="Imagen 1" class="card-img" onclick="openModal(this.src)">
+    <p>Camiones Escalables.</p>
+  </div>
+  <div class="card">
+    <img src="img/CARGAS QUIMICAS PELIGROSAS.jpeg" alt="Imagen 2" class="card-img" onclick="openModal(this.src)">
+    <p>Cargas Quimicas Peligrosas.</p>
+  </div>
+  <div class="card">
+    <img src="img/CARRETAS ABIERTAS  (1).jpeg" alt="Imagen 3" class="card-img" onclick="openModal(this.src)">
+    <p>Carretas Abiertas.</p>
+  </div>
+</section>
+<section class="card-container">
+  <div class="card">
+    <img src="img/CARRETAS PARA CARGAS TUBULARES.jpeg" alt="Imagen 1" class="card-img" onclick="openModal(this.src)">
+    <p>Carretas para Cargas Tubulares.</p>
+  </div>
+  <div class="card">
+    <img src="img/CARRETONES ESPECIALES.jpeg" alt="Imagen 2" class="card-img" onclick="openModal(this.src)">
+    <p>Carretones Especiales</p>
+  </div>
+  <div class="card">
+    <img src="img/planchas rebajas.jpeg" alt="Imagen 3" class="card-img" onclick="openModal(this.src)">
+    <p>Planchas Rebajadas.</p>
+  </div>
+</section>
+<section class="card-container">
+  <div class="card">
+    <img src="img/SAIDER 100M3.jpeg" alt="Imagen 1" class="card-img" onclick="openModal(this.src)">
+    <p>Saider 100M3</p>
+  </div>
+  <div class="card">
+    <img src="img/SAIDER DEPRIMIDOS 120M3.jpeg" alt="Imagen 2" class="card-img" onclick="openModal(this.src)">
+    <p>Saider Deprimidor 120M3.</p>
+  </div>
+  <div class="card">
+    <img src="img/furgon.jpg" alt="Imagen 3" class="card-img" onclick="openModal(this.src)">
+    <p>Furgon/Baul.</p>
+  </div>
+</section>
+<section class="card-container">
+  
+  <div class="card">
+    <img src="img/proyectos.jpeg" alt="Imagen 2" class="card-img" onclick="openModal(this.src)">
+    <p>Proyectos.</p>
+  </div>
+ 
+</section>
+<!-- Modal -->
+<div class="modal" id="imgModal" onclick="closeModal()">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="modalImg">
+</div>
+
+<style>
+ 
+
+  .card-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    padding: 40px 20px;
+  }
+
+  .card {
+    width: 300px;
+    background: #f4f4f4;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+
+  .card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+
+  .card p {
+    padding: 15px;
+    font-size: 1.1em;
+  }
+
+  /* Modal */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.85);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .modal-content {
+    max-width: 90%;
+    max-height: 90vh;
+    display: block;
+    margin: auto;
+    border-radius: 10px;
+  }
+
+  .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .card-container {
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 10px;
+    }
+
+    .card {
+      width: 90%;
+    }
+
+    .card-img {
+      height: 180px;
+    }
+
+    .modal-content {
+      max-height: 80vh;
+    }
+
+    .close {
+      font-size: 30px;
+      top: 10px;
+      right: 15px;
+    }
+  }
+</style>
+
+<script>
+  function openModal(src) {
+    document.getElementById("imgModal").style.display = "flex";
+    document.getElementById("modalImg").src = src;
+  }
+
+  function closeModal() {
+    document.getElementById("imgModal").style.display = "none";
+  }
+</script>
+
+  <br>br
+<footer class="footer-largo">
+  <div class="footer-contenedor">
+    
+    <!-- Columna 1: Descripción -->
+    <div class="footer-columna">
+      <h3>MD Logística</h3>
+      <p>Somos una empresa dedicada al transporte terrestre internacional de cargas completas. </p>
+    </div>
+
+    <!-- Columna 2: Navegación -->
+    <div class="footer-columna">
+      <h4>Navegación</h4>
+       <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="transporte-de-carga.html">Flota</a></li>
+        <li><a href="deposito-logistico.html">Depósito Logístico</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </div>
+
+    <!-- Columna 3: Contacto -->
+    <div class="footer-columna">
+      <h4>Contacto</h4>
+      <p><strong>📞 Tel:</strong> <a href="tel:+543772456852">3772 456852</a></p>
+      <p><strong>✉️ Email:</strong> <a href="mailto:dario@mdlogistica.com">dario@mdlogistica.com</a></p>
+      <p><strong>📍 Ubicación:</strong> Paso de los Libres, Argentina</p>
+    </div>
+
+    <!-- Columna 4: Redes Sociales -->
+    <div class="footer-columna">
+      <h4>Seguinos</h4>
+      <div class="footer-redes">
+          <a href="https://www.instagram.com/mdlogistica/" target="_blank">
+              <img src="svg/instagram-1-svgrepo-com.svg" alt="Instagram">
+            </a>
+           
+            <a href="https://wa.me/3772456852" target="_blank">
+              <img src="svg/whatsapp-icon-logo-svgrepo-com (1).svg" alt="WhatsApp">
+            </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-copy">
+    <p>&copy; 2025 MD Logística S.R.L. Todos los derechos reservados.</p>
+  </div>
+</footer>
+ <a href="https://wa.me/3772456852" class="boton-flotante" target="_blank">
+    <img src="img/wsp.jpg" alt="WhatsApp">
+  </a>
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+const menu = document.querySelector('.navbar ul');
+
+menuToggle.addEventListener('click', () => {
+  menu.classList.toggle('active');
+});
+async function cargarCotizaciones() {
+    const contenedor = document.getElementById('marquesina');
+
+    try {
+      const response = await fetch('https://dolarapi.com/v1/dolares');
+      const data = await response.json();
+
+      const tipos = ['oficial', 'blue', 'bolsa', 'contadoconliqui'];
+      const nombres = {
+        oficial: 'Dólar Oficial',
+        blue: 'Dólar Blue',
+        bolsa: 'Dólar MEP',
+        contadoconliqui: 'Dólar CCL'
+      };
+
+      tipos.forEach(tipo => {
+        const cotizacion = data.find(d => d.casa === tipo);
+        if (cotizacion) {
+          const span = document.createElement('span');
+          span.className = 'cotizacion-box';
+          span.innerHTML = `
+            <span class="titulo">${nombres[tipo]}:</span>
+            <span class="valor">Compra $${cotizacion.compra} | Venta $${cotizacion.venta}</span>
+          `;
+          contenedor.appendChild(span);
+        }
+      });
+
+    } catch (error) {
+      console.error('Error al cargar cotizaciones:', error);
+      contenedor.innerHTML = `<span class="cotizacion-box">Error al cargar cotizaciones</span>`;
+    }
+  }
+
+  cargarCotizaciones();
+  </script>
+</body>
+</html>

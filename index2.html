@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MD Logística</title>
+  <link rel="shortcut icon" href="img/logo MD GRANDE (2)_pages-to-jpg-0001-Photoroom.png" type="image/x-icon">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f2f2f2;
+
+      font-family: 'Arial', sans-serif;
+    }
+   
+   /* Estilos generales para el hero */
+.hero {
+  background-image: url('img/ChatGPT Image 7 may 2025, 01_50_24 p.m..png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: white;
+  text-align: center;
+  padding: 0 20px; /* Agregado para darle espacio al contenido en pantallas pequeñas */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contenido-hero h1 {
+margin-left: -70px;
+}
+  .hero {
+    background-position: center top; /* Cambiar el enfoque de la imagen */
+    background-size: cover;
+    height: 80vh; /* Ajustar la altura en pantallas pequeñas */
+  }
+}
+
+@media (max-width: 480px) {
+  .contenido-hero h1 {
+margin-left: -70px;
+}
+
+  .hero {
+    background-position: center top; /* Centrado de la imagen */
+    background-size: cover;
+    height: 60vh; /* Ajustar la altura aún más */
+    padding: 0 10px; /* Menos espacio lateral en pantallas muy pequeñas */
+  }
+}
+
+
+
+.marquesina-container {
+      width: 100%;
+      overflow: hidden;
+
+    }
+
+    .marquesina {
+      display: inline-block;
+      white-space: nowrap;
+      padding-left: 100%;
+      animation: deslizar 30s linear infinite;
+      font-size: 1.2rem;
+    }
+
+    .cotizacion-box {
+      display: inline-block;
+      margin: 0 2rem;
+      width: 23%;
+      padding: 10px;
+      border-radius: 5px;
+      white-space: nowrap;
+    }
+
+    .titulo {
+      font-weight: bold;
+      color:#e76d1f;
+      margin-right: 5px;
+    }
+
+    .valor {
+      color: black;
+    }
+
+    @keyframes deslizar {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    @media screen and (max-width: 768px) {
+      .marquesina {
+        font-size: 1rem;
+        animation-duration: 40s;
+      }
+
+      .cotizacion-box {
+        margin: 0 1rem;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .marquesina {
+        font-size: 0.9rem;
+        animation-duration: 50s;
+      }
+
+      .cotizacion-box {
+        margin: 0 0.5rem;
+      }
+    }
+
+    .navbar {
+  position: fixed;
+  top: 10px;
+  left: 0;
+  right: 0;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+}
+
+.navbar ul {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  align-items: center;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.btn-contacto {
+  background: #ff7e2d;
+  padding: 10px 15px;
+  border-radius: 5px;
+  color: white;
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  height: 3px;
+  background-color: black;
+  border-radius: 5px;
+}
+
+/* Responsive menu */
+@media (max-width: 768px) {
+  .navbar ul {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    gap: 20px;
+    
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro con transparencia */
+    position: absolute;
+    top: 60px;
+    left: 0;
+    padding: 10px;
+  }
+  .navbar a {
+    color: white; /* Color del texto */
+  }
+  .navbar ul.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+}
+  /* Estilos generales */
+.contenido-hero {
+  position: absolute;
+  bottom: 160px;
+  left: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.contenido-hero h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.btn-cotizacion {
+  background: #ff7e2d;
+  padding: 15px 25px;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+.btn-cotizacion:hover {
+  background: #e76d1f; /* Efecto hover */
+}
+
+
+/* Estilos generales para los servicios */
+.contenedor-servicio {
+  display: flex;
+  width: 70%;
+  border-radius: 20px;
+  justify-content: center;
+  background: linear-gradient(to bottom,  #ff7e2d);
+  position: relative;
+  gap: 60px;
+  left: 15%;
+  bottom: 50px;
+}
+
+.servicio {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+  border-radius: 12px;
+  width: 33.33%; /* Se reparten en 3 partes iguales */
+  box-sizing: border-box;
+}
+
+.icono img,
+.icono svg {
+  width: 50px;
+  height: 50px;
+}
+
+.texto-servicio h3 {
+  margin: 0;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.texto-servicio p {
+  margin: 4px 0 0;
+  font-size: 0.95rem;
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contenedor-servicio {
+    width: 90%; /* Se ajusta el contenedor para pantallas más pequeñas */
+    left: 5%; /* Ajusta la posición del contenedor */
+    gap: 0px; /* Reduce el espacio entre los elementos */
+  }
+
+  .servicio {
+    width: 100%; /* Las tarjetas ocupan el 100% del contenedor */
+    margin-bottom: 20px; /* Añade un espacio entre las tarjetas */
+  }
+
+  .icono img,
+  .icono svg {
+    width: 40px; /* Reduce el tamaño de los iconos en pantallas pequeñas */
+    height: 40px;
+  }
+
+  .texto-servicio h3 {
+    font-size: 1rem; /* Ajusta el tamaño de los títulos */
+  }
+
+  .texto-servicio p {
+    font-size: 0.85rem; /* Ajusta el tamaño del texto */
+  }
+}
+@media (max-width: 768px) {
+  .contenedor-servicio {
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    left: 5%;
+    gap: 0px;
+  }
+
+  .servicio {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .icono {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
+  .texto-servicio h3 {
+    font-size: 1rem;
+  }
+
+  .texto-servicio p {
+    font-size: 0.9rem;
+  }
+}
+
+.sobre-nosotros {
+      width: 100%;
+      margin: 40px auto;
+      padding: 30px;
+    
+    }
+
+    .sobre-nosotros h2 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      color: white;
+      background-color: #e76d1f;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .banderas {
+      margin-left: 10px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .banderas img {
+      height: 24px;
+      width: auto;
+      border-radius: 3px;
+    }
+
+    .sobre-nosotros p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-top: 15px;
+    }
+
+    .sobre-nosotros ul {
+      padding-left: 20px;
+      margin-top: 10px;
+    }
+
+    .sobre-nosotros li {
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+
+    }
+
+    @media screen and (max-width: 768px) {
+      .sobre-nosotros {
+        padding: 20px;
+      }
+
+      .sobre-nosotros h2 {
+        font-size: 1.4rem;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .banderas {
+        margin-top: 10px;
+      }
+    }
+    .mision-texto {
+    width: 100%;
+      margin: -50px auto 40px auto; /* MÁS ARRIBA: reduce el margen superior */
+      padding: 20px 30px;
+     
+    
+    }
+
+    .mision-texto h2 {
+      font-size: 1.8rem;
+      color: black;
+      margin-bottom: 10px;
+    }
+
+    .mision-texto h3 {
+      font-size: 1.6rem;
+      color: #e76d1f;
+      margin-top: 0;
+    }
+
+    .mision-texto p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-top: 10px;
+    }
+
+    .mision-tituo h2 {
+      margin-top: 30px;
+      font-size: 1.6rem;
+      width: 100%;
+      background-color: #e76d1f;
+   color: white;
+      padding-left: 10px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .mision-texto {
+        padding: 20px;
+      }
+
+      .mision-texto h2 {
+        font-size: 1.5rem;
+      }
+
+      .mision-texto h3 {
+        font-size: 1.2rem;
+      }
+
+      .mision-tituo h2 {
+        font-size: 1.3rem;
+      }
+    }
+    .valores-container {
+      margin: -50px auto 40px auto;
+      padding: 20px 30px;
+    }
+
+    .valores-container h2 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      text-align: left;
+      letter-spacing: 1px;
+    }
+
+    .valores-container h3 {
+      color: #f47b20;
+      font-size: 1.6rem;
+      margin-bottom: 40px;
+      font-weight: bold;
+    }
+
+    .valores-grid {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .valor-box {
+      flex: 1 1 250px;
+      max-width: 400px;
+      padding: 10px 20px;
+      border-left: 2px solid #f47b20;
+    }
+
+    .valor-box:first-child {
+      border-left: none;
+    }
+
+    .valor-box h4 {
+      font-size: 1.3rem;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .valor-box p {
+      font-size: 1.2rem;
+
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    @media screen and (max-width: 768px) {
+  .valores-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .valor-box, .valor-box-soluciones {
+    border: none;
+    border-top: 2px solid #f47b20;
+    padding: 80px 15px;
+    max-width: 90%;
+    text-align: center;
+    border-radius: 8px;
+  }
+
+  .valor-box:first-child, .valor-box-soluciones:first-child{
+    border-top: none;
+    margin-top: 0;
+  }
+
+  .valor-box h4, .valor-box-soluciones h4 {
+    font-size: 1.2rem;
+  }
+
+  .valor-box p, .valor-box-soluciones p {
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+
+  .valores-container h2 {
+    font-size: 1.1rem;
+  }
+
+  .valores-container h3 {
+    font-size: 1.3rem;
+  }
+}
+.valor-box-soluciones {
+  flex: 1 1 250px;
+  text-align: center;
+      max-width: 550px;
+      padding: 20px 40px;
+      border-left: 2px solid #f47b20;
+}
+
+.valor-box-soluciones h4 {
+      font-size: 1.3rem;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .valor-box-soluciones p {
+      font-size: 1.2rem;
+
+      line-height: 1.5;
+      text-align: center;
+    }
+
+.valor-box-soluciones ul {
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+.valor-box-soluciones ul li {
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+ 
+
+.footer-largo {
+  background-color: #1b1b18;
+  color: #c4c1c1;
+  padding: 60px 20px 30px;
+  font-family: sans-serif;
+}
+
+.footer-contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-columna {
+  flex: 1 1 220px;
+}
+
+.footer-columna h3,
+.footer-columna h4 {
+  color: #e76d1f;
+  margin-bottom: 15px;
+}
+
+.footer-columna ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-columna ul li {
+  margin-bottom: 10px;
+}
+
+.footer-columna a {
+  color: #c4c1c1;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-columna a:hover {
+  color: #e76d1f;
+}
+
+.footer-redes a img {
+  width: 30px;
+  margin-right: 10px;
+  transition: transform 0.3s ease;
+}
+
+
+.footer-copy {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid #44403d;
+  margin-top: 40px;
+  font-size: 0.9rem;
+  color: #7c7c7c;
+}
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <nav class="navbar">
+      <div class="logo">
+      </div>
+      <ul class="menu">
+        <li><a href="#">HOME</a></li>
+        <li><a href="#">FLOTA</a></li>
+        <li><a href="#">DEPOSITOS</a></li>
+        <li><a href="#" class="btn-contacto">CONTACTOS</a></li>
+      </ul>
+      <div class="menu-toggle" id="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+    
+    <div class="contenido-hero">
+      <h1>SU SATISFACCIÓN, ES NUESTRO ÉXITO</h1>
+      <a href="#" class="btn-cotizacion">SOLICITAR COTIZACIÓN</a>
+    </div>
+  </header>
+
+  <div class="contenedor-servicio">
+    <div class="servicio">
+      <div class="icono">
+        <svg xmlns="http://www.w3.org/2000/svg" height="50px" viewBox="0 -960 960 960" width="50px" fill="white">
+          <path d="M240-160q-50 0-85-35t-35-85H40v-440q0-33 23.5-56.5T120-800h560v160h120l120 160v200h-80q0 50-35 85t-85 35q-50 0-85-35t-35-85H360q0 50-35 85t-85 35Zm0-80q17 0 28.5-11.5T280-280q0-17-11.5-28.5T240-320q-17 0-28.5 11.5T200-280q0 17 11.5 28.5T240-240ZM120-360h32q17-18 39-29t49-11q27 0 49 11t39 29h272v-360H120v360Zm600 120q17 0 28.5-11.5T760-280q0-17-11.5-28.5T720-320q-17 0-28.5 11.5T680-280q0 17 11.5 28.5T720-240Zm-40-200h170l-90-120h-80v120ZM360-540Z"/>
+        </svg>
+      </div>
+      <div class="texto-servicio">
+        <h3>Transporte</h3>
+        <p>Nacional e internacional</p>
+      </div>
+    </div>
+  
+    <div class="servicio">
+      <div class="icono">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="white"><path d="M440-183v-274L200-596v274l240 139Zm80 0 240-139v-274L520-457v274Zm-40-343 237-137-237-137-237 137 237 137ZM160-252q-19-11-29.5-29T120-321v-318q0-22 10.5-40t29.5-29l280-161q19-11 40-11t40 11l280 161q19 11 29.5 29t10.5 40v318q0 22-10.5 40T800-252L520-91q-19 11-40 11t-40-11L160-252Zm320-228Z"/></svg>
+      </div>
+      <div class="texto-servicio">
+        <h3>Logística</h3>
+        <p>Distribución y almacenamiento</p>
+      </div>
+    </div>
+  
+    <div class="servicio">
+      <div class="icono">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="white"><path d="M475-160q4 0 8-2t6-4l328-328q12-12 17.5-27t5.5-30q0-16-5.5-30.5T817-607L647-777q-11-12-25.5-17.5T591-800q-15 0-30 5.5T534-777l-11 11 74 75q15 14 22 32t7 38q0 42-28.5 70.5T527-522q-20 0-38.5-7T456-550l-75-74-175 175q-3 3-4.5 6.5T200-435q0 8 6 14.5t14 6.5q4 0 8-2t6-4l136-136 56 56-135 136q-3 3-4.5 6.5T285-350q0 8 6 14t14 6q4 0 8-2t6-4l136-135 56 56-135 136q-3 2-4.5 6t-1.5 8q0 8 6 14t14 6q4 0 7.5-1.5t6.5-4.5l136-135 56 56-136 136q-3 3-4.5 6.5T454-180q0 8 6.5 14t14.5 6Zm-1 80q-37 0-65.5-24.5T375-166q-34-5-57-28t-28-57q-34-5-56.5-28.5T206-336q-38-5-62-33t-24-66q0-20 7.5-38.5T149-506l232-231 131 131q2 3 6 4.5t8 1.5q9 0 15-5.5t6-14.5q0-4-1.5-8t-4.5-6L398-777q-11-12-25.5-17.5T342-800q-15 0-30 5.5T285-777L144-635q-9 9-15 21t-8 24q-2 12 0 24.5t8 23.5l-58 58q-17-23-25-50.5T40-590q2-28 14-54.5T87-692l141-141q24-23 53.5-35t60.5-12q31 0 60.5 12t52.5 35l11 11 11-11q24-23 53.5-35t60.5-12q31 0 60.5 12t52.5 35l169 169q23 23 35 53t12 61q0 31-12 60.5T873-437L545-110q-14 14-32.5 22T474-80Zm-99-560Z"/></svg>
+      </div>
+      <div class="texto-servicio">
+        <h3>Aduanas</h3>
+        <p>Gestión documental</p>
+      </div>
+    </div>
+  </div>
+  <div class="marquesina-container">
+    <div class="marquesina" id="marquesina">
+      <!-- Las cotizaciones se agregarán acá automáticamente -->
+    </div>
+  </div>
+  <div class="sobre-nosotros">
+    <div class="texto">
+      <h2>
+        Logística y Transporte Internacional
+        <div class="banderas">
+          <img src="https://flagcdn.com/w40/ar.png" alt="Argentina">
+          <img src="https://flagcdn.com/w40/br.png" alt="Brasil">
+          <img src="https://flagcdn.com/w40/uy.png" alt="Uruguay">
+          <img src="https://flagcdn.com/w40/py.png" alt="Paraguay">
+          <img src="https://flagcdn.com/w40/cl.png" alt="Chile">
+        </div>
+      </h2>
+    </div>
+    <p>
+      Nuestra gama de servicios para las operatorias de importación y exportación cubre todas las fases de la distribución física.
+      <br><br>
+      <b>Ofrecemos:</b>
+      <ul>
+        <li>Transportes locales e internacionales, en todas sus modalidades.</li>
+        <li>Formalidades y declaraciones aduaneras.</li>
+        <li>Seguros locales e internacionales sobre: mercaderías, acondicionamiento, embalaje, almacenaje y distribución.</li>
+      </ul>
+    </p>
+  </div>
+  <div class="mision-texto">
+    <h2>Comprometidos con el Servicio</h2>
+    <h3>Guiados por Nuestra Misión</h3>
+    <p>Nuestro compromiso por entregar un mayor nivel de servicio está guiado por la esencia de nuestra misión y nuestro valores</p>
+  <div class="mision-tituo">
+    <h2>Misión</h2>
+  </div>
+<p>En <b>MD</b> Logística basamos nuestro accionar bajo los principios de confianza, lealtad e integridad, lo cual se refleja en el manejo de las relaciones dentro y fuera de la compañia. <br>
+ 
+
+<p>Estamos comprometidos a ayudar a nuestros clientes a alcanzar sus objetivos más eficientemente, reduciendo tiempos, costos y gastos asociados con sus necesidades de transporte.</p></div>
+<section class="valores-container">
+  <h2>
+    Estos son los Valores
+  </h2>
+  <h3>
+    Que Motivan Nuestro Trabajo Diario
+  </h3>
+
+  <div class="valores-grid">
+    <div class="valor-box">
+      <h4>CONFIANZA</h4>
+      <p>Es la base fundacional sobre la que se basa la relación entre nuestros clientes y nuestro equipo de trabajo.</p>
+    </div>
+    <div class="valor-box">
+      <h4>LEALTAD</h4>
+      <p>Refleja nuestro compromiso a largo plazo para servir a nuestros clientes y equipo de trabajo, poniendo sus necesidades primero.</p>
+    </div>
+    <div class="valor-box">
+      <h4>INTEGRIDAD</h4>
+      <p>Significa honrar nuestro compromiso de hacer siempre lo que es correcto y mantener nuestros principios y valores cuando algo no sale de acuerdo a lo planeado.</p>
+    </div>
+  </div>
+</section>
+<br>
+<section class="valores-container">
+  <h2>
+   Como Hacemos
+  </h2>
+  <h3>
+   Lo que Hacemos
+  </h3>
+
+  <div class="valores-grid">
+    <div class="valor-box">
+      <h4>Nuestro Proceso</h4>
+      <p>Buscamos conocer su organización y su programa logístico actúal para luego poder desarrollar y ofrecer soluciones hechas a su medida actuando como un activo y estrátegico colaborador para su negocio</p>
+    </div>
+    <div class="valor-box-soluciones">
+      <h4>Nuestras Soluciones</h4>
+      <p>Nuestras soluciones end-to-end y nuestros servicios comprenden: Cargas de equipos completos, abiertos o cerrados.
+        <ul>
+          <li>Cargas especiales y sobredimensionadas.</li>
+          <li>Depósitos en Uruguayana y Paso de los Libres.</li>
+          <li>Fumigación de embalaje de madera en frontera.</li>
+          <li>Propuesta de valor consistente en el tiempo.</li>
+        </ul>
+      </p>
+    </div>
+    
+  </div>
+</section>
+<section class="valores-container">
+  <h2>
+   ¿Como Podemos <strong style="color:#e76d1f"> Ayudarlo?</strong>
+  </h2>
+
+
+  <div class="valores-grid">
+    <div class="valor-box">
+      <h4>Oficina Operativa</h4>
+      <p>Edif. Hech Of. 14</p>
+      <p>Paso de los Libres</p>
+      <p>Corrientes. Argentina</p>
+      <p> Tel.:
+        <a href="tel:03772-425116">
+        03772-425116</p>
+      </a>
+    </div>
+    <div class="valor-box">
+      <h4>Oficina Administrativa</h4>
+      <p>Italia 376 Piso 3A</p>
+      <p>Lomas de Zamora</p>
+      <p>Buenos Aires. Argentina</p>
+      <p> Tel.: <a href="tel:011-42835058">
+       011-42835058</p></a>
+    </div>
+    <div class="valor-box">
+      <h4>Atención Comercial</h4>
+      <p>Director:</p>
+      <p>Darío Molo</p>
+      <p>Email: <br>
+        <a href="mailto:dario@mdlogistica.com">dario@mdlogistica.com</a>
+      </p>
+      
+      <p>    Cel.:<a href="tel:+549 377245 6852">
+     +549 377245 6852</p></a>
+    </div>
+  </div>
+</section>
+<footer class="footer-largo">
+  <div class="footer-contenedor">
+    
+    <!-- Columna 1: Descripción -->
+    <div class="footer-columna">
+      <h3>MD Logística</h3>
+      <p>Somos una empresa dedicada al transporte terrestre internacional de cargas completas. </p>
+    </div>
+
+    <!-- Columna 2: Navegación -->
+    <div class="footer-columna">
+      <h4>Navegación</h4>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+        <li><a href="transporte-de-carga.html">Transporte de Cargas</a></li>
+        <li><a href="deposito-logistico.html">Depósito Logístico</a></li>
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+
+    <!-- Columna 3: Contacto -->
+    <div class="footer-columna">
+      <h4>Contacto</h4>
+      <p><strong>📞 Tel:</strong> <a href="tel:+543772456852">3772 456852</a></p>
+      <p><strong>✉️ Email:</strong> <a href="mailto:dario@mdlogistica.com">dario@mdlogistica.com</a></p>
+      <p><strong>📍 Ubicación:</strong> Paso de los Libres, Argentina</p>
+    </div>
+
+    <!-- Columna 4: Redes Sociales -->
+    <div class="footer-columna">
+      <h4>Seguinos</h4>
+      <div class="footer-redes">
+          <a href="https://www.instagram.com/mdlogistica/" target="_blank">
+              <img src="svg/instagram-1-svgrepo-com.svg" alt="Instagram">
+            </a>
+           
+            <a href="https://wa.me/3772456852" target="_blank">
+              <img src="svg/whatsapp-icon-logo-svgrepo-com (1).svg" alt="WhatsApp">
+            </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-copy">
+    <p>&copy; 2025 MD Logística S.R.L. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+const menu = document.querySelector('.navbar ul');
+
+menuToggle.addEventListener('click', () => {
+  menu.classList.toggle('active');
+});
+async function cargarCotizaciones() {
+    const contenedor = document.getElementById('marquesina');
+
+    try {
+      const response = await fetch('https://dolarapi.com/v1/dolares');
+      const data = await response.json();
+
+      const tipos = ['oficial', 'blue', 'bolsa', 'contadoconliqui'];
+      const nombres = {
+        oficial: 'Dólar Oficial',
+        blue: 'Dólar Blue',
+        bolsa: 'Dólar MEP',
+        contadoconliqui: 'Dólar CCL'
+      };
+
+      tipos.forEach(tipo => {
+        const cotizacion = data.find(d => d.casa === tipo);
+        if (cotizacion) {
+          const span = document.createElement('span');
+          span.className = 'cotizacion-box';
+          span.innerHTML = `
+            <span class="titulo">${nombres[tipo]}:</span>
+            <span class="valor">Compra $${cotizacion.compra} | Venta $${cotizacion.venta}</span>
+          `;
+          contenedor.appendChild(span);
+        }
+      });
+
+    } catch (error) {
+      console.error('Error al cargar cotizaciones:', error);
+      contenedor.innerHTML = `<span class="cotizacion-box">Error al cargar cotizaciones</span>`;
+    }
+  }
+
+  cargarCotizaciones();
+  </script>
+</body>
+</html>

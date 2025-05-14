@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deposito Logístico | MD Logística</title>
+    <link rel="shortcut icon" href="img/logo-Photoroom.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+      @media (max-width: 768px) {
+  .contenido,
+  .slider-deposito,
+  .sobre-nosotros .contenido,
+  .contact-bar {
+    padding: 40px 15px !important;
+    gap: 20px !important;
+  }
+
+  .nav-links {
+    width: 100%;
+    right: 0;
+  }
+
+  .slider-contenido {
+    min-height: auto;
+  }
+
+  .slide h2 {
+    font-size: 1.3rem;
+  }
+
+  .slide p {
+    font-size: 1rem;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .footer-columna {
+    text-align: center;
+  }
+
+  .sobre-nosotros .imagen img {
+    max-width: 90%;
+  }
+
+  .nav-links a {
+    padding: 10px;
+    font-size: 1rem;
+  }
+
+  .footer-contenedor {
+    padding: 0 20px;
+  }
+}
+
+          body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f2f2f2;
+      color: #c4c1c1;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    .logo {
+  display: flex;
+  align-items: center;
+}
+
+    .logo img {
+  height: auto;
+  width: 170px;
+  object-fit: contain;
+}
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+    .nav-links a {
+      color:  #e3110e ;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .nav-toggle span {
+      background: #edd406;
+      height: 3px;
+      margin: 4px 0;
+      width: 25px;
+      display: block;
+    }
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background-color: #1b1b18;
+        flex-direction: column;
+        width: 200px;
+        border: 1px solid #44403d;
+        border-radius: 8px;
+        padding: 10px;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .nav-toggle {
+        display: flex;
+      }
+    }
+    .contact-bar {
+  width: auto;
+  background-color: #e3110e;
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  padding: 10px 20px;
+  flex-wrap: wrap;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.contact-item a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.contact-item a:hover {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 768px) {
+  .contact-bar {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+}
+/* FOOTER responsive */
+@media (max-width: 768px) {
+  .footer-contenedor {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .footer-columna {
+    flex: 1 1 100%;
+  }
+
+  .footer-redes a img {
+    margin-right: 15px;
+  }
+}
+ 
+
+.footer-largo {
+  background-color: #1b1b18;
+  color: #c4c1c1;
+  padding: 60px 20px 30px;
+  font-family: sans-serif;
+}
+
+.footer-contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-columna {
+  flex: 1 1 220px;
+}
+
+.footer-columna h3,
+.footer-columna h4 {
+  color: #edd406;
+  margin-bottom: 15px;
+}
+
+.footer-columna ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-columna ul li {
+  margin-bottom: 10px;
+}
+
+.footer-columna a {
+  color: #c4c1c1;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-columna a:hover {
+  color: #edd406;
+}
+
+.footer-redes a img {
+  width: 30px;
+  margin-right: 10px;
+  transition: transform 0.3s ease;
+}
+
+
+.footer-copy {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid #44403d;
+  margin-top: 40px;
+  font-size: 0.9rem;
+  color: #7c7c7c;
+}
+
+
+.cta-button:hover {
+  background-color: #b90f0d;
+}
+.mision-vision {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  padding: 20px 20px;
+  background-color: #f2f2f2;
+}
+
+.boton-flotante {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  transition: transform 0.3s ease;
+}
+
+.boton-flotante:hover {
+  transform: scale(1.1);
+}
+
+.boton-flotante img {
+  width: 60px;
+  border-radius: 50%;
+
+  height: 60px;
+}
+.mision-vision .bloque {
+ 
+  color: #fff;
+  padding: 40px 30px;
+  border-radius: 12px;
+  max-width: 500px;
+  flex: 1 1 400px;
+}
+
+
+.mision-vision h2 {
+  color: #b90f0d;
+  font-size: 2rem;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.mision-vision p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #44403d;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .mision-vision {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+ 
+.boton-flotante {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  transition: transform 0.3s ease;
+}
+
+.boton-flotante:hover {
+  transform: scale(1.1);
+}
+
+.boton-flotante img {
+  width: 60px;
+  border-radius: 50%;
+
+  height: 60px;
+}
+.contenido {
+      max-width: 1200px;
+      margin: auto;
+      padding: 60px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .contenido .imagen,
+    .contenido .video {
+      flex: 1 1 500px;
+      text-align: center;
+    }
+
+    .contenido .imagen img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .contenido .video video {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .descripcion {
+      max-width: 800px;
+      margin: 40px auto;
+      text-align: center;
+    }
+
+    .descripcion h2 {
+      color: #e76d1f;
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    .descripcion p {
+      font-size: 1.1rem;
+      color: #44403d;
+      line-height: 1.7;
+    }
+
+    .mapa {
+      margin: 60px auto;
+      max-width: 1000px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+    }
+
+    .mapa iframe {
+      width: 100%;
+      height: 450px;
+      border: none;
+    }
+
+    @media (max-width: 768px) {
+      .contenido {
+        flex-direction: column;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+    }
+    .slider-deposito {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding: 60px 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.deposito-img {
+  flex: 1 1 500px;
+  text-align: center;
+}
+
+.deposito-img img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.slider-contenido {
+  flex: 1 1 500px;
+  position: relative;
+  min-height: 260px;
+}
+
+.slides {
+  position: relative;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.slide.activo {
+  opacity: 1;
+  position: relative;
+}
+
+.slide h2 {
+  font-size: 1.8rem;
+  color: #e76d1f;
+  margin-bottom: 10px;
+}
+
+.slide p {
+  font-size: 1.1rem;
+  color: #44403d;
+  line-height: 1.6;
+}
+
+.controles {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.controles button {
+  background-color:#e76d1f;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.controles button:hover {
+  background-color: #b90f0d;
+}
+
+@media (max-width: 768px) {
+  .slider-deposito {
+    flex-direction: column;
+  }
+
+  .slide h2 {
+    font-size: 1.4rem;
+  }
+
+  .video-section {
+    padding: 40px 10px;
+  }
+  .slide p {
+    font-size: 1rem;
+  }
+} .video-section {
+      background-color: #f2f2f2;
+      padding: 60px 20px;
+      text-align: center;
+    }
+  
+    .video-contenedor video {
+      max-width: 90%;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+
+    .contacto {
+  padding: 60px 20px;
+  background-color: #f2f2f2;
+  text-align: center;
+}
+
+.contacto h2 {
+  font-size: 2rem;
+  color: #1b1b18;
+  margin-bottom: 10px;
+}
+
+.contacto p {
+  font-size: 1.1rem;
+  color: #525454;
+  margin-bottom: 30px;
+}
+
+.contacto-redes {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.contacto-redes img {
+  width: 40px;
+  transition: transform 0.3s ease;
+}
+
+.contacto-redes img:hover {
+  transform: scale(1.2);
+}
+
+.formulario-contacto {
+  max-width: 600px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.formulario-contacto input,
+.formulario-contacto textarea {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.formulario-contacto button {
+  background-color: #e3110e;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.formulario-contacto button:hover {
+  background-color: #b80000;
+}
+   /* Estilos generales para el hero */
+.hero {
+  background-image: url('img/ChatGPT Image 14 may 2025, 02_08_07 p.m..png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: white;
+  text-align: center;
+  padding: 0 20px; /* Agregado para darle espacio al contenido en pantallas pequeñas */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contenido-hero h1 {
+margin-left: -70px;
+}
+  .hero {
+    background-position: center top; /* Cambiar el enfoque de la imagen */
+    background-size: cover;
+    height: 80vh; /* Ajustar la altura en pantallas pequeñas */
+  }
+}
+
+@media (max-width: 480px) {
+  .contenido-hero h1 {
+margin-left: -70px;
+}
+
+  .hero {
+    background-position: center top; /* Centrado de la imagen */
+    background-size: cover;
+    height: 60vh; /* Ajustar la altura aún más */
+    padding: 0 10px; /* Menos espacio lateral en pantallas muy pequeñas */
+  }
+}
+   .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+}
+
+.navbar ul {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  align-items: center;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.btn-contacto {
+  background: #ff7e2d;
+  padding: 10px 15px;
+  border-radius: 5px;
+  color: white;
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25px;
+  height: 20px;
+  cursor: pointer;
+}
+
+    .cotizacion-box {
+      display: inline-block;
+      margin: 0 2rem;
+      width: 23%;
+      padding: 10px;
+      border-radius: 5px;
+      white-space: nowrap;
+    }
+
+    .titulo {
+      font-weight: bold;
+      color:#e76d1f;
+      margin-right: 5px;
+    }
+
+    .valor {
+      color: black;
+    }
+
+.btn-contacto {
+  background: #ff7e2d;
+  padding: 10px 15px;
+  border-radius: 5px;
+  color: white;
+}
+ /* Estilos generales */
+.contenido-hero {
+  position: absolute;
+  bottom: 160px;
+  left: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.contenido-hero h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.btn-cotizacion {
+  background: #ff7e2d;
+  padding: 15px 25px;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+.btn-cotizacion:hover {
+  background: #e76d1f; /* Efecto hover */
+}
+
+    @keyframes deslizar {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    @media screen and (max-width: 768px) {
+      .marquesina {
+        font-size: 1rem;
+        animation-duration: 40s;
+      }
+
+      .cotizacion-box {
+        margin: 0 1rem;
+      }
+    }
+.menu-toggle span {
+  height: 3px;
+  background-color: black;
+  border-radius: 5px;
+}
+
+/* Responsive menu */
+@media (max-width: 768px) {
+  .navbar ul {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    gap: 20px;
+    
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro con transparencia */
+    position: absolute;
+    top: 60px;
+    left: 0;
+    padding: 10px;
+  }
+  .navbar a {
+    color: white; /* Color del texto */
+  }
+  .navbar ul.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+} .logo img {
+    height: 150px;
+    max-width: 100%;
+  }
+    </style>
+</head>
+<body>
+    <header class="hero">
+    <nav class="navbar">
+      <div class="logo">
+        <img src="img/logo MD GRANDE (2)_pages-to-jpg-0001-Photoroom.png" alt="">
+      </div>
+      <ul class="menu">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="transporte-de-carga.html">FLOTA</a></li>
+        <li><a href="deposito-logistico.html">DEPOSITOS</a></li>
+        <li><a href="contacto.html" class="btn-contacto">CONTACTOS</a></li>
+      </ul>
+      <div class="menu-toggle" id="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+    
+    <div class="contenido-hero">
+      <h1>SU SATISFACCIÓN, ES NUESTRO ÉXITO</h1>
+      <a href="https://wa.me/3772456852" class="btn-cotizacion">SOLICITAR COTIZACIÓN</a>
+    </div>
+  </header>
+
+
+  <section class="slider-deposito">
+    <div class="deposito-img">
+      <img id="slider-img" src="img/deposito1.jpg" alt="Depósito MD Logística">
+    </div>
+  
+    <div class="slider-contenido">
+      <div class="slides" id="slides">
+        <div class="slide activo">
+          <h2>Depósito Logístico en Uruguaiana</h2>
+          <p>Contamos con un <strong>depósito propio en Brasil</strong>, clave para operar en frontera con eficiencia.</p>
+        </div>
+        <div class="slide">
+          <h2>Almacenamiento Estratégico</h2>
+          <p><strong>Almacenamiento temporal</strong> para mercadería diversa, optimizando tiempos y costos.</p>
+        </div>
+        <div class="slide">
+          <h2>Gestión de Cargas</h2>
+          <p>Manejamos <strong>cargas completas y parciales</strong> con trazabilidad total.</p>
+        </div>
+        <div class="slide">
+          <h2>Optimización Operativa</h2>
+          <p>Ofrecemos <strong>flexibilidad logística</strong> para consolidaciones y transbordos.</p>
+        </div>
+      </div>
+  
+      
+    </div>
+  </section>
+  
+  
+
+  <section class="descripcion">
+    <h2>Almacenamiento Estratégico</h2>
+    <p>
+      Contamos con un depósito propio ubicado en <strong>Brasil y Argentina</strong>, equipado para el almacenaje temporal de mercaderías diversas. Una solución ideal para facilitar el tránsito de carga entre fronteras y agilizar procesos logísticos internacionales.
+    </p>
+  </section>
+
+
+  <a href="https://wa.me/3772456852" class="boton-flotante" target="_blank">
+    <img src="img/wsp.jpg" alt="WhatsApp">
+  </a>
+  <section class="video-section" >
+    <div class="video-contenedor">
+      <video controls>
+        <source src="img/eeposito.mp4" type="video/mp4">
+        Tu navegador no soporta videos HTML5.
+      </video>
+    </div>
+  </section>
+ 
+  <a href="https://wa.me/3772456852" class="boton-flotante" target="_blank">
+    <img src="img/wsp.jpg" alt="WhatsApp">
+  </a>
+  <footer class="footer-largo">
+    <div class="footer-contenedor">
+      
+      <!-- Columna 1: Descripción -->
+      <div class="footer-columna">
+        <h3>MD Logística</h3>
+        <p>Somos una empresa dedicada al transporte terrestre internacional de cargas completas. </p>
+      </div>
+  
+      <!-- Columna 2: Navegación -->
+      <div class="footer-columna">
+        <h4>Navegación</h4>
+        <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="transporte-de-carga.html">Flota</a></li>
+        <li><a href="deposito-logistico.html">Depósito Logístico</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+      </div>
+  
+      <!-- Columna 3: Contacto -->
+      <div class="footer-columna">
+        <h4>Contacto</h4>
+        <p><strong>📞 Tel:</strong> <a href="tel:+543772456852">3772 456852</a></p>
+        <p><strong>✉️ Email:</strong> <a href="mailto:dario@mdlogistica.com">dario@mdlogistica.com</a></p>
+        <p><strong>📍 Ubicación:</strong> Paso de los Libres, Argentina</p>
+      </div>
+  
+      <!-- Columna 4: Redes Sociales -->
+      <div class="footer-columna">
+        <h4>Seguinos</h4>
+        <div class="footer-redes">
+            <a href="https://www.instagram.com/mdlogistica/" target="_blank">
+                <img src="svg/instagram-1-svgrepo-com.svg" alt="Instagram">
+              </a>
+              <a href="https://www.facebook.com/md.logistica/" target="_blank">
+                <img src="svg/facebook-color-svgrepo-com.svg" alt="Facebook">
+              </a>
+              <a href="https://wa.me/3772456852" target="_blank">
+                <img src="svg/whatsapp-icon-logo-svgrepo-com (1).svg" alt="WhatsApp">
+              </a>
+        </div>
+      </div>
+    </div>
+  
+    <div class="footer-copy">
+      <p>&copy; 2025 MD Logística S.R.L. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const imagenes = [
+      "img/deposito1.jpeg",
+      "img/deposito2.jpeg",
+      "img/deposito3.jpeg",
+      "img/deposito4.jpeg"
+    ];
+    const imgTag = document.getElementById('slider-img');
+    let index = 0;
+  
+    function mostrarSlide(i) {
+      slides.forEach(s => s.classList.remove('activo'));
+      slides[i].classList.add('activo');
+      imgTag.src = imagenes[i];
+    }
+  
+    function moverSlide(direccion) {
+      index = (index + direccion + slides.length) % slides.length;
+      mostrarSlide(index);
+    }
+  
+    // autoplay cada 6 segundos
+    setInterval(() => {
+      moverSlide(1);
+    }, 6000);
+  
+    // iniciar con primer slide
+    mostrarSlide(index);
+    function enviarWhatsApp() {
+    const nombre = document.getElementById("nombre").value.trim();
+    const mensaje = document.getElementById("mensaje").value.trim();
+
+    const numeroWhatsApp = "543772456852"; // reemplazar por tu número con código país sin "+"
+    const texto = `Hola, soy *${nombre}* %0A%0A${mensaje}`;
+
+    const url = `https://wa.me/${numeroWhatsApp}?text=${texto}`;
+
+    window.open(url, '_blank');
+  }
+  </script>
+  
+</body>
+</html>
