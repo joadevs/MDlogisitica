@@ -24,6 +24,7 @@
   background-repeat: no-repeat;
   height: 100vh;
   display: flex;
+  width: auto;
   align-items: center;
   justify-content: center;
   position: relative;
@@ -32,6 +33,7 @@
   padding: 0 20px;
   transition: background-image 1s ease-in-out;
 }
+
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -147,7 +149,7 @@ margin-left: -70px;
 
 .btn-contacto {
   background: #ff7e2d;
-  padding: 10px 15px;
+  padding: 10px 10px;
   border-radius: 5px;
   color: white;
 }
@@ -233,7 +235,7 @@ margin-left: -70px;
   position: relative;
   gap: 60px;
   left: 15%;
-  bottom: 50px;
+  bottom: 80px;
 }
 
 .servicio {
@@ -823,11 +825,11 @@ margin-left: -70px;
   <div class="valores-grid">
     <div class="valor-box">
       <br>
-           <h4>Gestión Operativa</h4>
+           <h4>Atención Comercial</h4>
       <p>Director:</p>
       <p>Cristian Decostanzi</p>
       <p>Email: <br>
-        <a href="mailto:cristian@mdlogistica.com">cristian@mdlogistica.com</a>
+        <a href="mailto:dario@mdlogistica.com">dario@mdlogistica.com</a>
       </p>
          <p>    Cel.: <br><a href="tel:+54 9 3772 43-9300">
     +54 9 3772 43-9300</p></a>
@@ -863,7 +865,7 @@ margin-left: -70px;
     <!-- Columna 1: Descripción -->
     <div class="footer-columna">
       <h3>MD Logística</h3>
-      <p>Somos una empresa dedicada al transporte terrestre internacional de cargas completas y consolidadas. </p>
+      <p>Somos una empresa dedicada al transporte terrestre internacional de cargas completas. </p>
     </div>
 
     <!-- Columna 2: Navegación -->
@@ -948,7 +950,7 @@ async function cargarCotizaciones() {
 
   cargarCotizaciones();
     const hero = document.querySelector('.hero');
- const backgrounds = [
+  const backgrounds = [
         'img/SAIDER 100M3.jpeg',
     'img/pportada.jpeg',
          'img/fondo3.jpg',
@@ -957,6 +959,7 @@ async function cargarCotizaciones() {
                  'img/pportada3.jpg'
 
   ];
+
   let current = 0;
 
   function changeBackground() {
