@@ -891,6 +891,12 @@ margin-left: -70px;
     </div>
   </footer>
   <script>
+         const menuToggle = document.getElementById('menu-toggle');
+const menu = document.querySelector('.navbar ul');
+
+menuToggle.addEventListener('click', () => {
+  menu.classList.toggle('active');
+});
     const slides = document.querySelectorAll('.slide');
     const imagenes = [
       "img/deposito1.jpeg",
