@@ -266,12 +266,18 @@ margin-left: -70px;
 }
 @media (max-width: 768px) {
   .contenedor-servicio {
+    display: flex; /* ESTO FALTABA */
     flex-direction: column;
     align-items: center;
-    gap: 20px; /* Agrega espacio entre bloques */
+    gap: 20px;
+    width: 100%;
+    padding: 20px;
+    background-color: #fca311; /* ASEGURA EL FONDO NARANJA */
+    box-sizing: border-box;
   }
 
   .servicio {
+    display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
@@ -281,22 +287,23 @@ margin-left: -70px;
   }
 
   .icono {
-    margin-bottom: 10px; /* Separación visual del texto */
+    margin-bottom: 10px;
   }
 
   .icono svg {
     width: 40px;
-    height: 40px; /* Escala para móviles */
+    height: 40px;
   }
 
   .texto-servicio h3 {
-    font-size: 1rem; /* Texto más cómodo en móviles */
+    font-size: 1rem;
   }
 
   .texto-servicio p {
     font-size: 0.85rem;
   }
 }
+
 
 .sobre-nosotros {
       width: 100%;
