@@ -265,22 +265,27 @@ margin-left: -70px;
   color: white;
 }
 
-/* Responsive */
-
 @media (max-width: 768px) {
   .contenedor-servicio {
+    display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px; /* Espacio entre los bloques */
+    gap: 20px;
+    width: 100%;
+    padding: 20px;
+    background-color: #fca311; /* Asegura que el naranja aparezca */
   }
 
   .servicio {
+    display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     width: 100%;
     padding: 20px;
     box-sizing: border-box;
+    background-color: white; /* Para contraste y estructura */
+    border-radius: 10px;
   }
 
   .icono {
@@ -300,7 +305,6 @@ margin-left: -70px;
     font-size: 0.85rem;
   }
 }
-
 
 .sobre-nosotros {
       width: 100%;
