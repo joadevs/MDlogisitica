@@ -264,15 +264,21 @@ margin-left: -70px;
   font-size: 0.95rem;
   color: white;
 }
+
+
 @media (max-width: 768px) {
   .contenedor-servicio {
-    display: flex; /* ESTO FALTABA */
+    display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 20px;
-    width: 100%;
+    background-color: #fca311;
+    width: 90%;
+    max-width: 500px;
+    margin: 0 auto; /* Centra horizontalmente */
     padding: 20px;
-    background-color: #fca311; /* ASEGURA EL FONDO NARANJA */
+    border-radius: 10px;
     box-sizing: border-box;
   }
 
@@ -282,7 +288,9 @@ margin-left: -70px;
     align-items: center;
     text-align: center;
     width: 100%;
-    padding: 20px;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 8px;
     box-sizing: border-box;
   }
 
