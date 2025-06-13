@@ -266,51 +266,30 @@ margin-left: -70px;
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-  .contenedor-servicio {
-    width: 90%; /* Se ajusta el contenedor para pantallas más pequeñas */
-    left: 5%; /* Ajusta la posición del contenedor */
-    gap: 0px; /* Reduce el espacio entre los elementos */
-  }
 
-  .servicio {
-    width: 100%; /* Las tarjetas ocupan el 100% del contenedor */
-    margin-bottom: 20px; /* Añade un espacio entre las tarjetas */
-  }
-
-  .icono img,
-  .icono svg {
-    width: 40px; /* Reduce el tamaño de los iconos en pantallas pequeñas */
-    height: 40px;
-  }
-
-  .texto-servicio h3 {
-    font-size: 1rem; /* Ajusta el tamaño de los títulos */
-  }
-
-  .texto-servicio p {
-    font-size: 0.85rem; /* Ajusta el tamaño del texto */
-  }
-}
 @media (max-width: 768px) {
   .contenedor-servicio {
     flex-direction: column;
     align-items: center;
-    width: 90%;
-    left: 5%;
-    gap: 0px;
+    gap: 20px; /* Espacio entre los bloques */
   }
 
   .servicio {
-    width: 100%;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
   }
 
   .icono {
-    display: flex;
-    justify-content: center;
     margin-bottom: 10px;
+  }
+
+  .icono svg {
+    width: 40px;
+    height: 40px;
   }
 
   .texto-servicio h3 {
@@ -318,9 +297,10 @@ margin-left: -70px;
   }
 
   .texto-servicio p {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
 }
+
 
 .sobre-nosotros {
       width: 100%;
