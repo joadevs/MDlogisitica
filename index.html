@@ -153,47 +153,78 @@ margin-left: -70px;
   border-radius: 5px;
   color: white;
 }
-
+/* Estilo para el botón hamburguesa */
 .menu-toggle {
   display: none;
   flex-direction: column;
   justify-content: space-between;
-  width: 25px;
-  height: 20px;
+  width: 30px;
+  height: 22px;
   cursor: pointer;
+  z-index: 1001; /* Que quede por encima del menú */
 }
 
 .menu-toggle span {
   height: 3px;
+  width: 100%;
   background-color: black;
-  border-radius: 5px;
+  border-radius: 2px;
+  transition: all 0.3s ease;
 }
 
-/* Responsive menu */
-@media (max-width: 768px) {
-  .navbar ul {
-    display: none;
-    width: 100%;
-    flex-direction: column;
-    gap: 20px;
-    
-    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro con transparencia */
-    position: absolute;
-    top: 60px;
-    left: 0;
-    padding: 10px;
-  }
-  .navbar a {
-    color: white; /* Color del texto */
-  }
-  .navbar ul.active {
-    display: flex;
-  }
+/* Animación cuando está abierto */
+.menu-toggle.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.menu-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
 
+/* Responsive */
+@media (max-width: 768px) {
   .menu-toggle {
     display: flex;
   }
+
+  .navbar ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    background-color: rgba(0, 0, 0, 0.95);
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+  }
+
+  .navbar ul.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
+  }
+
+  .navbar a:hover {
+    color: #ffcc00;
+  }
 }
+
   /* Estilos generales */
 .contenido-hero {
   position: absolute;
@@ -907,11 +938,21 @@ margin-bottom:10px;
 </footer>
 
   <script>
-    const menuToggle = document.getElementById('menu-toggle');
+     const menuToggle = document.getElementById('menu-toggle');
 const menu = document.querySelector('.navbar ul');
 
-menuToggle.addEventListener('click', () => {
+menuToggle.addEventListener('click', (e) => {
+  e.stopPropagation(); // No se propaga el click al document
   menu.classList.toggle('active');
+  menuToggle.classList.toggle('open');
+});
+
+document.addEventListener('click', (e) => {
+  // Si se hace clic fuera del menú y del botón
+  if (!menu.contains(e.target) && !menuToggle.contains(e.target)) {
+    menu.classList.remove('active');
+    menuToggle.classList.remove('open');
+  }
 });
 async function cargarCotizaciones() {
     const contenedor = document.getElementById('marquesina');
